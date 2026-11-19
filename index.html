@@ -11,6 +11,6 @@
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
 // Vor der Live-Schaltung durch die tatsächliche geschäftliche E-Mail-Adresse ersetzen.
-const recipient='';
+const recipient='info@ozn-fahrzeugüberführungen.de';
 document.getElementById('requestForm').addEventListener('submit',function(e){e.preventDefault();const feedback=document.getElementById('feedback');if(!recipient){feedback.textContent='Das Anfrageformular ist noch nicht freigeschaltet. Bitte zuerst die geschäftliche E-Mail-Adresse hinterlegen.';return;}const d=new FormData(this);const lines=[`Name: ${d.get('name')}`,`E-Mail: ${d.get('email')}`,`Leistung: ${d.get('service')}`,`Abholort: ${d.get('from')}`,`Zielort: ${d.get('to')}`,`Wunschtermin: ${d.get('date')||'Nicht angegeben'}`,`Details: ${d.get('details')||'Keine'}`];location.href='mailto:'+recipient+'?subject='+encodeURIComponent('Neue Transportanfrage über OZN')+'&body='+encodeURIComponent(lines.join('\n'));feedback.textContent='Bitte prüfen und versenden Sie die vorbereitete Nachricht in Ihrem E-Mail-Programm.';});
 </script></body></html>
